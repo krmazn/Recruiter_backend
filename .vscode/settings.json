@@ -1,0 +1,15 @@
+{
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  },
+  "ruff.importStrategy": "fromEnvironment",
+  "editor.formatOnSave": true,
+  "mypy-type-checker.importStrategy": "fromEnvironment",
+  "mypy-type-checker.cwd": "${workspaceFolder}/app",
+  "ruff.lint.args": [
+    "--config=${workspaceFolder}/app/pyproject.toml"
+  ],
+  "ruff.format.args": [
+    "--config=${workspaceFolder}/app/pyproject.toml"
+  ]
+}

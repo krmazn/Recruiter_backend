@@ -1,0 +1,121 @@
+[tool.mypy]
+plugins = "pydantic.mypy"
+ignore_missing_imports = true
+
+[tool.ruff.lint]
+extend-select = [
+    # pycodestyle
+    "E",
+    "W",
+    # Pyflakes
+    "F",
+    # pyupgrade
+    "UP",
+    # flake8-bugbear
+    "B",
+    # flake8-simplify
+    "SIM",
+    # isort
+    "I",
+    # pylint
+    "PL",
+    # mccabe
+    "C901",
+    # flake8-return
+    "RET",
+    # pep8-naming
+    "N",
+    # flake8-annotations
+    "ANN",
+    # flake8-async
+    "ASYNC",
+    # flake8-bandit
+    "S",
+    # flake8-blind-except
+    "BLE",
+    # flake8-boolean-trap
+    "FBT",
+    # flake8-builtins
+    "A",
+    # flake8-comprehensions
+    "C4",
+    # flake8-logging-format
+    "G",
+    # flake8-pie
+    "PIE",
+    # flake8-print
+    "T20",
+    # flake8-pytest-style
+    "PT",
+    # flake8-self
+    "SLF",
+    # flake8-type-checking
+    "TCH",
+    # flake8-unused-arguments
+    "ARG",
+    # flake8-use-pathlib
+    "PTH",
+    # flake8-todos
+    "TD",
+    # flake8-fixme
+    "FIX",
+    # eradicate
+    "ERA",
+    # perflint
+    "PERF",
+    # Ruff-specific rules
+    "RUF",
+]
+ignore = ["ANN101", "ANN102", "ANN401", "PLR0913", "RUF002", "RUF003"]
+allowed-confusables = ["у", "е", "г", "х", "а", "р", "о", "с", "б", "У", "К", "Е", "Н", "З", "Х", "В", "А", "Р", "О", "С", "М", "Т", "Ь"]
+
+[tool.ruff.lint.per-file-ignores]
+"app/tests/*" = ["S101"]
+
+[tool.poetry]
+package-mode = false
+name = "template"
+
+[tool.poetry.dependencies]
+python = "~3.12.0"
+alembic = "*"
+asyncpg = "*"
+fastapi = "*"
+fastapi-pagination = "*"
+fastapi-sqlalchemy-toolkit = "*"
+pydantic = "*"
+pydantic-settings = "*"
+uvicorn = "*"
+email-validator = "*"
+sqlalchemy = "*"
+sqlakeyset = "*"
+
+
+[tool.poetry.group.dev]
+optional = true
+
+
+[tool.poetry.group.dev.dependencies]
+mypy = "*"
+ruff = "*"
+
+[tool.poetry.group.prod]
+optional = true
+
+
+[tool.poetry.group.prod.dependencies]
+sentry-sdk = {extras = ["fastapi"], version = "^1.40.4"}
+gunicorn = "*"
+
+
+[tool.poetry.group.test]
+optional = true
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "*"
+httpx = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
